@@ -1,4 +1,4 @@
-"""
+"""  
     This script implements random gaussian generation
     of Cosmic Microwave Background - like small-angle density
     maps with 3 different methods of computation accelerations:
@@ -18,6 +18,16 @@
     k1, k2 - coordinates on 2d grid (Kx * Ky) of polarization vector,
     satisfying as k1^2 + k2^2 = k^2
 """
+
+__author__ = "Shvartsman Alexandr"
+__copyright__ = 'Copyright 2020, CMB-like generation'
+__credits__ = ['Shvartsman Alexandr']
+__license__ = "MIT"
+__version__ = "1.0.1"
+__maintainer__ = 'Shvartsman Alexandr'
+__email__ = ''
+__status__ = 'Prototype'
+__date__ = '2020/09/26'
 
 __all__ = ['generate_cmb', 'draw_cmb_map', 'compare_methods']
 
@@ -411,32 +421,15 @@ def compute_cuda_1dgrid(
 
     for i in range(start, Nx, stride):
         for j in range(0, Ny):
-            # for ik1 in range(0, 2 * Kx + 1):
-            #     for jk2 in range(0, 2 * Ky + 1):
-            #         f[i, j] +=\
-            #             a[ik1, jk2] * m.cos(
-            #                 (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-            #                 + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi) +\
-            #             b[ik1, jk2] * m.sin(
-            #                 (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-            #                 + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi)
-
-            # 2 loops are replaced by one
-            for ik in range(0, (2 * Kx + 1) * (2 * Ky + 1)):
-                ik1 = 0
-                jk2 = 0
-                f[i, j] +=\
-                    a[ik1, jk2] * m.cos(
-                        (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-                        + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi) +\
-                    b[ik1, jk2] * m.sin(
-                        (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-                        + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi)
-                if ik1 != 2 * Kx + 1:
-                    ik1 += 1
-                else:
-                    ik1 = 0
-                    jk2 += 1
+            for ik1 in range(0, 2 * Kx + 1):
+                for jk2 in range(0, 2 * Ky + 1):
+                    f[i, j] +=\
+                        a[ik1, jk2] * m.cos(
+                            (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
+                            + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi) +\
+                        b[ik1, jk2] * m.sin(
+                            (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
+                            + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi)
 
 
 ###########################################################
@@ -481,32 +474,15 @@ def compute_cuda_2dgrid(
 
     for i in range(start1, Nx, stride1):
         for j in range(start2, Ny, stride2):
-            # for ik1 in range(0, 2 * Kx + 1):
-            #     for jk2 in range(0, 2 * Ky + 1):
-            #         f[i, j] +=\
-            #             a[ik1, jk2] * m.cos(
-            #                 (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-            #                 + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi) +\
-            #             b[ik1, jk2] * m.sin(
-            #                 (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-            #                 + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi)
-
-            # 2 loops are replaced by one
-            for ik in range(0, (2 * Kx + 1) * (2 * Ky + 1)):
-                ik1 = 0
-                jk2 = 0
-                f[i, j] +=\
-                    a[ik1, jk2] * m.cos(
-                        (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-                        + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi) +\
-                    b[ik1, jk2] * m.sin(
-                        (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-                        + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi)
-                if ik1 != 2 * Kx + 1:
-                    ik1 += 1
-                else:
-                    ik1 = 0
-                    jk2 += 1
+            for ik1 in range(0, 2 * Kx + 1):
+                for jk2 in range(0, 2 * Ky + 1):
+                    f[i, j] +=\
+                        a[ik1, jk2] * m.cos(
+                            (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
+                            + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi) +\
+                        b[ik1, jk2] * m.sin(
+                            (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
+                            + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi)
 
 
 ###########################################################
@@ -551,22 +527,15 @@ def compute_cuda_3dgrid(
 
     for i in range(start1, Nx, stride1):
         for j in range(start2, Ny, stride2):
-            # 2 loops are replaced by one
-            for ik in range(start3, (2 * Kx + 1) * (2 * Ky + 1), stride3):
-                ik1 = 0
-                jk2 = 0
-                f[i, j] +=\
-                    a[ik1, jk2] * m.cos(
-                        (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-                        + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi) +\
-                    b[ik1, jk2] * m.sin(
-                        (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
-                        + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi)
-                if ik1 != 2 * Kx + 1:
-                    ik1 += 1
-                else:
-                    ik1 = 0
-                    jk2 += 1
+            for ik1 in range(start3, 2 * Kx + 1, stride3):
+                for jk2 in range(0, 2 * Ky + 1):
+                    f[i, j] +=\
+                        a[ik1, jk2] * m.cos(
+                            (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
+                            + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi) +\
+                        b[ik1, jk2] * m.sin(
+                            (ik1 - Kx) * x[i] / x[-1] * 2 * np.pi
+                            + (jk2 - Ky) * y[j] / y[-1] * 2 * np.pi)
 
 
 def generate_cmb(
@@ -809,8 +778,8 @@ def compare_methods():
 
 if __name__ == '__main__':
     help(__name__)
-    # N = 1024
-    # K = 3
+    N = 1024
+    K = 3
     # cmb_arr = generate_cmb(N, N, K, K, acceleration_type='no')
     # cmb_arr = generate_cmb(N, N, K, K, acceleration_type='Matr')
     # cmb_arr = generate_cmb(N, N, K, K, acceleration_type='Matr+jit')
