@@ -722,7 +722,6 @@ def compare_methods():
     N_arr = np.linspace(10, 100, 10, endpoint=True, dtype=int)
     # N_arr = np.array([32, 64, 128, 256, 512, 1024, 2048])
     # N_arr = np.array([16, 32, 64, 128, 256])
-    # N_arr = np.array([16, 32, 64, 128, 256])
     no_acc = np.zeros(N_arr.shape)
     jit_acc = np.zeros(N_arr.shape)
     jit_par_acc = np.zeros(N_arr.shape)
