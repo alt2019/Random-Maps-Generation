@@ -2,7 +2,13 @@
 Map generation of random distributions with different methods
 
 ## CMB: 
-Implementation of 2d random gaussian field generation. Resulting map is cosmic microwave background-like in small-angle case. Also here are implemented some methods of python code acceleration: 
+Implementation of 2d random gaussian field generation. Resulting map is cosmic microwave background-like in small-angle case. 
+![](https://github.com/alt2019/Random-Maps-Generation/blob/master/CMB/CMB-like-map-N1024-K3.png)
+![](https://github.com/alt2019/Random-Maps-Generation/blob/master/CMB/CMB-like-map-N1024-K5.png)
+![](https://github.com/alt2019/Random-Maps-Generation/blob/master/CMB/CMB-like-map-N1024-K10.png)
+![](https://github.com/alt2019/Random-Maps-Generation/blob/master/CMB/CMB-like-map-N1024-K20.png)
+
+Also here are implemented some methods of python code acceleration: 
 * numpy matrices instead of nested raw for-loops;
 * numba just-in-time compilation
 * numba just-in-time compilation plus parallelization on CPU
