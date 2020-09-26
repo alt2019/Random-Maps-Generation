@@ -2,7 +2,7 @@
 Map generation of random distributions with different methods
 
 ## CMB: 
-Implementation of 2d random gaussian field generation. Resulting map is cosmic microwave background-like in small-angle case. 
+Implementation of 2d random gaussian field generation. Resulting map is cosmic microwave background-like in small-angle case with different number of modes: 3,5, 10, 20.
 ![](https://github.com/alt2019/Random-Maps-Generation/blob/master/CMB/CMB-like-map-N1024-K3.png)
 ![](https://github.com/alt2019/Random-Maps-Generation/blob/master/CMB/CMB-like-map-N1024-K5.png)
 ![](https://github.com/alt2019/Random-Maps-Generation/blob/master/CMB/CMB-like-map-N1024-K10.png)
