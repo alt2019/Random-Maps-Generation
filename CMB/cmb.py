@@ -679,11 +679,15 @@ def draw_cmb_map(arr: np.ndarray) -> None:
         arr: np.ndarray
             Array to draw
     """
-    plt.title('small-angle CMB distribution map')
+    fig = plt.figure()
+    fig.suptitle('small-angle CMB distribution map', fontsize=20)
     plt.xlabel("x")
     plt.ylabel("y")
     plt.imshow(arr, cmap='viridis')
     plt.colorbar()
+    fig.set_size_inches(8.33, 8.33)
+    plt.savefig('CMB-like-map-01.png', dpi=200,
+                orientation='landscape')
     plt.show()
 
 
