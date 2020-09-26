@@ -9,5 +9,9 @@ Implementation of 2d random gaussian field generation. Resulting map is cosmic m
 * numba CUDA jit compilation with different types of threads grid organization: 1d, 2d, 3d
 
 Also these methods are compared in performance for different output 2d map size NxN
-For small grid (N from 10 to 100):
+
+* For small grid (N from 10 to 100):
 ![alt tag](https://github.com/alt2019/Random-Maps-Generation/blob/master/CMB/methods-comparison-smallN.png)
+
+* For medium and large grid (N varies in 32, 64, 128, 256, 512, 1024, 2048):
+![](https://github.com/alt2019/Random-Maps-Generation/blob/master/CMB/methods-comparison-medium-to-largeN.png)
