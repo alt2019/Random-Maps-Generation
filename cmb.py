@@ -818,6 +818,6 @@ if __name__ == '__main__':
     # cmb_arr = generate_cmb(N, N, K, K,
     #                        acceleration_type='Matr+jit+par')
     # cmb_arr = generate_cmb(N, N, K, K, acceleration_type='jit+par')
-    # cmb_arr = generate_cmb(N, N, K, K, acceleration_type='cuda')
-    # draw_cmb_map(cmb_arr)
+    cmb_arr = generate_cmb(N, N, K, K, acceleration_type='cuda2d')
+    draw_cmb_map(cmb_arr)
     compare_methods()
